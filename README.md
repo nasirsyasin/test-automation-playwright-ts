@@ -1,6 +1,6 @@
 <div align="center">
 
-# Playwright Test Automation Practice
+# Playwright Test Automation
 
 **A TypeScript test automation project for practicing reliable browser testing with Playwright.**
 
