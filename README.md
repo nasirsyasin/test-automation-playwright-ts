@@ -12,7 +12,7 @@
 
 ## Overview
 
-This repository contains hands-on examples for browser automation using [Playwright Test](https://playwright.dev/docs/test-intro) and TypeScript. The tests cover page assertions, URL validation, and accessible element locators across Chromium and Firefox.
+This repository contains hands-on examples for browser automation using [Playwright Test](https://playwright.dev/docs/test-intro) and TypeScript. The tests cover page assertions, URL validation, and accessible element locators across Chromium and Firefox. Each run produces both Playwright HTML results and Allure test-result data.
 
 > **Note:** The examples currently target public demonstration websites. An internet connection is required, and tests may be affected by changes or availability of those websites.
 
@@ -33,6 +33,7 @@ This repository contains hands-on examples for browser automation using [Playwri
 | --- | --- |
 | [Playwright](https://playwright.dev/) | Cross-browser end-to-end testing |
 | [Playwright Test](https://playwright.dev/docs/test-intro) | Test runner, assertions, fixtures, and reporting |
+| [Allure Report](https://allurereport.org/) | Rich test reporting and result history |
 | [TypeScript](https://www.typescriptlang.org/) | Typed test development |
 | Node.js and npm | Runtime and dependency management |
 
@@ -102,10 +103,30 @@ npx playwright test --ui
 
 ## Reports and debugging
 
-The project uses Playwright's HTML reporter. Open the latest report after a test run:
+The project uses both Playwright's HTML reporter and the Allure reporter.
+
+Open the latest Playwright HTML report after a test run:
 
 ```bash
 npx playwright show-report
+```
+
+Generate an Allure HTML report from the latest results:
+
+```bash
+npx allure generate allure-results --clean -o allure-report
+```
+
+Open the generated Allure report:
+
+```bash
+npx allure open allure-report
+```
+
+Or generate and open an Allure report in one command:
+
+```bash
+npx allure serve allure-results
 ```
 
 For step-by-step debugging, run a test in debug mode:
@@ -114,7 +135,7 @@ For step-by-step debugging, run a test in debug mode:
 npx playwright test tests/mytest.spec.ts --debug
 ```
 
-Generated reports are stored in `playwright-report/`. Failure artifacts, including error context and traces when applicable, are stored in `test-results/`.
+Generated Playwright reports are stored in `playwright-report/`. Allure result files are stored in `allure-results/`, and generated Allure reports are stored in `allure-report/`. Failure artifacts, including error context and traces when applicable, are stored in `test-results/`.
 
 ## Configuration
 
@@ -125,7 +146,7 @@ The test configuration is defined in `playwright.config.ts` and currently:
 - Runs tests in Chromium and Firefox.
 - Retries failed tests twice in CI.
 - Collects a trace on the first retry.
-- Generates an HTML report.
+- Generates Playwright HTML and Allure results through a multi-reporter configuration.
 
 WebKit, mobile projects, branded browsers, and a local development server are included as commented configuration examples.
 
@@ -141,6 +162,8 @@ WebKit, mobile projects, branded browsers, and a local development server are in
 ├── package.json
 ├── playwright.config.ts
 ├── playwright-report/      # Generated HTML reports
+├── allure-results/         # Allure result files
+├── allure-report/          # Generated Allure HTML report
 └── test-results/           # Generated test artifacts
 ```
 
@@ -155,6 +178,9 @@ npx playwright test --update-snapshots
 
 # View the Playwright version
 npx playwright --version
+
+# Generate an Allure report
+npx allure generate allure-results --clean -o allure-report
 ```
 
 ## Learning focus
@@ -164,4 +190,4 @@ The examples demonstrate:
 - Page title and URL assertions with `expect`.
 - Semantic locators such as `getByRole`, `getByText`, and `getByAltText`.
 - Browser projects and cross-browser execution.
-- HTML reporting and retry traces for troubleshooting failures.
+- Playwright HTML and Allure reporting, plus retry traces for troubleshooting failures.
