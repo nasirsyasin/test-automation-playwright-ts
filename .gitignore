@@ -8,4 +8,11 @@ node_modules/
 /playwright/.auth/
 /allure-results/
 /allure-report/
+
+# Local Playwright practice tests
+/tests/mytest.spec.ts
+/tests/mytest2.spec.ts
+/tests/pwlocator.spec.ts
+/tests/pwlocators.spec.ts
+
 .DS_Store
