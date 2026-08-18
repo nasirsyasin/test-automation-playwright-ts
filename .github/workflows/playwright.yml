@@ -1,6 +1,7 @@
 name: Tests with Allure Report
 
 on:
+  push:
   pull_request:
     branches: [main]
 
@@ -39,7 +40,7 @@ jobs:
         run: npx allure generate allure-results --clean -o allure-report
 
       - name: Post Allure summary to pull request
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
         uses: allure-framework/allure-action@v0
         with:
           report-directory: ./allure-report
