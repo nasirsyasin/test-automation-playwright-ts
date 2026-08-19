@@ -96,10 +96,8 @@ npx playwright test --ui
 
 | Test file | Coverage |
 | --- | --- |
-| `tests/mytest.spec.ts` | Verifies the Google page title |
-| `tests/mytest2.spec.ts` | Verifies the Testo page URL |
-| `tests/pwlocator.spec.ts` | Practices accessible locators on the nopCommerce demo store |
-| `tests/pwlocators.spec.ts` | Reserved for additional locator exercises |
+| `tests/login.spec.ts` | Verifies login and logout on Practice Test Automation |
+| `tests/test-table.spec.ts` | Verifies Automation Courses language filters |
 
 ## Reports and debugging
 
@@ -155,10 +153,12 @@ WebKit, mobile projects, branded browsers, and a local development server are in
 ```text
 .
 ├── tests/
-│   ├── mytest.spec.ts
-│   ├── mytest2.spec.ts
-│   ├── pwlocator.spec.ts
-│   └── pwlocators.spec.ts
+│   ├── login.spec.ts
+│   └── test-table.spec.ts
+├── pages/
+│   ├── home.page.ts
+│   ├── login.page.ts
+│   └── test-table.page.ts
 ├── package.json
 ├── playwright.config.ts
 ├── playwright-report/      # Generated HTML reports
